@@ -1,6 +1,11 @@
 /* ---------===== custom props ====--------- */
 
-
+export interface Chair {
+  id: number;
+  photo?: string;
+  createdAt: string;
+  updatedAt: string;
+}
 
 /* ---------===== auth models =====--------- */
 
