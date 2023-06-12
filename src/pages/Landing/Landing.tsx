@@ -1,20 +1,33 @@
 // css
 import styles from './Landing.module.css'
 
-// types
-import { User } from '../../types/models'
+import ChairCard from '../../components/ChairCard/chairCard';
 
-interface LandingProps {
-  user: User | null;
+// types
+import { Chair } from '../../types/models'
+
+interface ChairProps {
+  chairs: Chair[];
 }
 
-const Landing = (props: LandingProps): JSX.Element => {
-  const { user } = props
+const Landing = (props: ChairProps): JSX.Element => {
+  const { chairs } = props
 
+  if (!chairs.length) {
+    return (
+      <main className={styles.container}>
+        <h1>Loading Chairs</h1>
+      </main>
+    )
+  }
   return (
-    <main className={styles.container}>
-      <h1>Musical Chairs</h1>
-      <h2>Welcome, {user ? user.name : 'friend'}</h2>
+    <main className="list">
+      {chairs.map((chair: Chair) => (
+        <ChairCard
+          key={chair.id}
+          chair={chair}
+        />
+      ))}
     </main>
   )
 }

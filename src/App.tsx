@@ -1,5 +1,5 @@
 // npm modules 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Routes, Route, useNavigate } from 'react-router-dom'
 
 // pages
@@ -15,17 +15,30 @@ import ProtectedRoute from './components/ProtectedRoute/ProtectedRoute'
 
 // services
 import * as authService from './services/authService'
+import * as chairService from './services/chairService'
 
 // styles
 import './App.css'
 
 // types
-import { User } from './types/models'
+import { User, Chair } from './types/models'
 
 function App(): JSX.Element {
   const [user, setUser] = useState<User | null>(authService.getUser())
+  const [chairs, setChairs] = useState<Chair[]>([])
   const navigate = useNavigate()
   
+  useEffect((): void => {
+    const fetchChairs = async (): Promise<void> => {
+      try {
+        const chairData: Chair[] = await chairService.getChairs()
+        setChairs(chairData)
+      } catch (error) {
+        console.log(error);
+        
+      }
+    }
+  })
   const handleLogout = (): void => {
     authService.logout()
     setUser(null)

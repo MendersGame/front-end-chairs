@@ -1,14 +1,20 @@
 // assets
-import defaultPic from "../../assets/icons/profile.png"
-
+import defaultPic from "../../assets/icons/Note.png"
+// import { useState } from "react"
 // components
 // import VoteManager from "../VoteManager/VoteManager"
 
 // types
 import { Chair } from "../../types/models"
+// import { ChairFormData } from "../../types/forms"
+
+// import deleteButton from '../../assets/icons/delete.svg'
+// import editButton from '../../assets/icons/edit.svg'
+// import saveButton from '../../assets/icons/save.svg'
 
 interface ChairCardProps {
   chair: Chair;
+  // chairs: Chair[];
 }
 
 const ChairCard = (props: ChairCardProps): JSX.Element => {

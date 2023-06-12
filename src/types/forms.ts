@@ -1,6 +1,9 @@
 /* ---------==== custom forms ====--------- */
 
-
+export interface ChairFormData {
+  name: string;
+  photo?: string;
+}
 
 /* ---------===== auth forms =====--------- */
 
